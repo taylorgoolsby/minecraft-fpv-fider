@@ -2,7 +2,6 @@ package sql
 
 import (
 	"context"
-	"time"
 
 	"github.com/getfider/fider/app/models/cmd"
 	"github.com/getfider/fider/app/models/dto"
