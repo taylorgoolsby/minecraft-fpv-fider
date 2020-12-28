@@ -75,7 +75,7 @@ func writeLog(ctx context.Context, level log.Level, message string, props dto.Pr
 
 	go func() {
 		_, _ = dbx.Connection().Exec(
-			"SELECT * FROM logs;"
+			"SELECT * FROM logs;",
 		)
 	}()
 }
