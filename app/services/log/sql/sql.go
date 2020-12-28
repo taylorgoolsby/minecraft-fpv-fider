@@ -60,23 +60,23 @@ func logError(ctx context.Context, c *cmd.LogError) {
 }
 
 func writeLog(ctx context.Context, level log.Level, message string, props dto.Props) {
-	if !log.IsEnabled(level) {
-		return
-	}
+	// if !log.IsEnabled(level) {
+	// 	return
+	// }
 
-	props = log.GetProperties(ctx).Merge(props)
+	// props = log.GetProperties(ctx).Merge(props)
 
-	message = log.Parse(message, props, false)
-	tag := props[log.PropertyKeyTag]
-	if tag == nil {
-		tag = "???"
-	}
-	delete(props, log.PropertyKeyTag)
+	// message = log.Parse(message, props, false)
+	// tag := props[log.PropertyKeyTag]
+	// if tag == nil {
+	// 	tag = "???"
+	// }
+	// delete(props, log.PropertyKeyTag)
 
-	go func() {
-		_, _ = dbx.Connection().Exec(
-			"INSERT INTO logs (tag, level, text, created_at, properties) VALUES ($1, $2, $3, $4, $5)",
-			tag, level.String(), message, time.Now(), props,
-		)
-	}()
+	// go func() {
+	// 	_, _ = dbx.Connection().Exec(
+	// 		"INSERT INTO logs (tag, level, text, created_at, properties) VALUES ($1, $2, $3, $4, $5)",
+	// 		tag, level.String(), message, time.Now(), props,
+	// 	)
+	// }()
 }
